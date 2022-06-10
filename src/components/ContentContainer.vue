@@ -7,10 +7,10 @@
 
     <div class="cards-container">
 
-      <MusicCard 
-      v-for="(item, index) in musicList" 
-      :key="index" 
-      :musicObject="item" />
+      <div class="wrapper">
+
+        <MusicCard v-for="(item, index) in musicList" :key="index" :musicObject="item" />
+      </div>
     </div>
 
   </div>
@@ -39,7 +39,7 @@ export default {
       axios
         .get(this.apiUrl)
         .then((result) => {
-          this.musicList = result.data;
+          this.musicList = result.data.response;
           console.log(this.musicList);
         })
         .catch((error) => {
@@ -68,5 +68,16 @@ export default {
 .cards-container {
   background-color: #1e2d3b;
   height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+
+  .wrapper {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 800px;
+    max-width: 1200px;
+    padding-top: 30px;
+  }
 }
 </style>
