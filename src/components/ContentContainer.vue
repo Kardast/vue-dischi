@@ -7,41 +7,44 @@
 
     <div class="cards-container">
 
-      <MusicCard />
+      <MusicCard 
+      v-for="(item, index) in musicList" 
+      :key="index" 
+      :musicObject="item" />
     </div>
 
   </div>
 </template>
 
 <script>
-import MusicCard from './MusicCard.vue';
 import axios from "axios";
+import MusicCard from './MusicCard.vue';
 
 export default {
   name: "ContentContainer",
   components: {
     MusicCard
   },
-  data(){
-    return{
+  data() {
+    return {
       apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",
       musicList: []
     }
   },
-  created(){
+  created() {
     this.getMusicList();
   },
   methods: {
-    getMusicList(){
+    getMusicList() {
       axios
-      .get(this.apiUrl)
-      .then((result) => {
-        this.musicList = result.data;
-        console.log(this.musicList);
-      })
-      .catch((error) => {
-        console.log("Errore", error);
-      })
+        .get(this.apiUrl)
+        .then((result) => {
+          this.musicList = result.data;
+          console.log(this.musicList);
+        })
+        .catch((error) => {
+          console.log("Errore", error);
+        })
     }
   }
 

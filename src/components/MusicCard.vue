@@ -1,15 +1,15 @@
 <template>
   <div class="music-card">
-    
+    <img :src="musicObject.poster" :alt="musicObject.title">
   </div>
 </template>
 
 <script>
 export default {
   name: 'MusicCard',
-  // props: {
-
-  // }
+  props: {
+    musicObject: Object
+  }
 }
 </script>
 
