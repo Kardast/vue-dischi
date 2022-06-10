@@ -7,37 +7,63 @@
 
     <div class="cards-container">
 
+      <MusicCard />
     </div>
 
   </div>
 </template>
 
 <script>
-export default {
-  name: 'ContentContainer',
-  // props: {
+import MusicCard from './MusicCard.vue';
+import axios from "axios";
 
-  // }
+export default {
+  name: "ContentContainer",
+  components: {
+    MusicCard
+  },
+  data(){
+    return{
+      apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",
+      musicList: []
+    }
+  },
+  created(){
+    this.getMusicList();
+  },
+  methods: {
+    getMusicList(){
+      axios
+      .get(this.apiUrl)
+      .then((result) => {
+        this.musicList = result.data;
+        console.log(this.musicList);
+      })
+      .catch((error) => {
+        console.log("Errore", error);
+      })
+    }
+  }
+
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.navbar {
+  background-color: #2e3a46;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
 
-  .navbar{
-    background-color: #2e3a46;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-
-    img{
-      height: 60px;
-    }
+  img {
+    height: 60px;
   }
+}
 
-  .cards-container{
-    background-color: #1e2d3b;
-    height: calc(100vh - 100px);
-  }
+.cards-container {
+  background-color: #1e2d3b;
+  height: calc(100vh - 100px);
+}
 </style>
