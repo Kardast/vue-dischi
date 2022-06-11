@@ -1,9 +1,11 @@
 <template>
-    
+
   <div class="music-card">
     <img :src="musicObject.poster" :alt="musicObject.title">
-    <div>
-        <!-- <h3>{{musicObject.title}}</h3> -->
+    <div class="text-box">
+      <h3>{{ musicObject.title }}</h3>
+      <span>{{ musicObject.author }}</span> <br>
+      <span>{{ musicObject.year }}</span>
     </div>
   </div>
 </template>
@@ -19,19 +21,31 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.music-card{
-    width: calc(100% / 5 - 40px);
-    display: flex;
-    justify-content: center;
-    align-items: top;
-    padding-top: 20px;
-    background-color: #2e3a46;
-    margin: 10px 20px;
+.music-card {
+  width: calc(100% / 5 - 40px);
+  height: 320px;
+  padding-top: 20px;
+  text-align: center;
+  background-color: #2e3a46;
+  margin: 10px 20px;
+  box-sizing: border-box;
 
-    img{
-        width: 150px;
-        height: 150px;
+  img {
+    width: 80%;
+    height: 150px;
+    object-fit: contain;
+  }
 
+  .text-box {
+    padding: 5px 15px;
+    h3 {
+      color: white;
+      font-size: 24px;
+      margin-bottom: 10px;
     }
+    span{
+      color: grey;
+    }
+  }
 }
 </style>

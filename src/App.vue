@@ -1,18 +1,20 @@
 <template>
   <div id="app">
-    
+    <MyHeader/>
     <ContentContainer/>
   </div>
 </template>
 
 <script>
 import ContentContainer from './components/ContentContainer.vue';
+import MyHeader from './components/MyHeader.vue';
 
 
 export default {
   name: 'App',
   components: {
-    ContentContainer
+    ContentContainer,
+    MyHeader
 }
 }
 </script>

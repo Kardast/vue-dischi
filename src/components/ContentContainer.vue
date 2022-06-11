@@ -1,16 +1,10 @@
 <template>
   <div class="content-container">
-    <div class="navbar">
-
-      <img src="../assets/img/logo-small.svg" alt="logo">
-    </div>
 
     <div class="cards-container">
 
-      <div class="wrapper">
 
-        <MusicCard v-for="(item, index) in musicList" :key="index" :musicObject="item" />
-      </div>
+      <MusicCard v-for="(item, index) in musicList" :key="index" :musicObject="item" />
     </div>
 
   </div>
@@ -53,29 +47,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.navbar {
-  background-color: #2e3a46;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  padding-left: 20px;
-
-  img {
-    height: 60px;
-  }
-}
-
-.cards-container {
+.content-container {
   background-color: #1e2d3b;
   height: calc(100vh - 100px);
   display: flex;
   justify-content: center;
 
-  .wrapper {
-    width: 60%;
+  .cards-container {
+    width: 70%;
     display: flex;
     flex-wrap: wrap;
-    min-width: 800px;
+    // min-width: 300px;
     max-width: 1200px;
     padding-top: 30px;
   }
