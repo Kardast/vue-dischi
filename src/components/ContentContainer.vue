@@ -1,8 +1,9 @@
 <template>
   <div class="content-container">
 
-    <div class="cards-container">
+    <div id="loader" v-if="loading">LOADING ...</div>
 
+    <div class="cards-container" v-else>
 
       <MusicCard v-for="(item, index) in musicList" :key="index" :musicObject="item" />
     </div>
@@ -22,7 +23,8 @@ export default {
   data() {
     return {
       apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",
-      musicList: []
+      musicList: [],
+      loading: true
     }
   },
   created() {
@@ -35,6 +37,7 @@ export default {
         .then((result) => {
           this.musicList = result.data.response;
           console.log(this.musicList);
+          this.loading = false;
         })
         .catch((error) => {
           console.log("Errore", error);
@@ -53,11 +56,19 @@ export default {
   display: flex;
   justify-content: center;
 
+  #loader{
+    color: white;
+    font-size: 50px;
+    background-color: #2e475e;
+    height: 70px;
+    padding: 10px;
+    margin-top: 15px
+  }
+
   .cards-container {
     width: 70%;
     display: flex;
     flex-wrap: wrap;
-    // min-width: 300px;
     max-width: 1200px;
     padding-top: 30px;
   }
