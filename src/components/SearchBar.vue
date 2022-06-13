@@ -6,6 +6,15 @@
     v-model="inputText"
     @keyup.enter="myFirstEmit()"
     >
+    <button @click.prevent="myFirstEmit()">Search</button>
+    <button @click.prevent="resetSearch()">Clear</button>
+    <select v-model="inputText" @click.prevent="myFirstEmit()" name="selection" id="select">
+      <option value="">All</option>
+      <option value="rock">Rock</option>
+      <option value="pop">Pop</option>
+      <option value="metal">Metal</option>
+      <option value="jazz">Jazz</option>
+    </select>
         
   </div>
 </template>
@@ -21,8 +30,11 @@ export default {
 
   methods: {
     myFirstEmit(){
-        this.$emit('mySearch', this.inputText);
-        console.log(this.inputText);
+      this.$emit('mySearch', this.inputText);
+    },
+    resetSearch(){
+      this.inputText= "";
+      this.myFirstEmit();
     }
     
   }
